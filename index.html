@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<canvas id="myCanvas"></canvas>
+	<script>
+		var c=document.getElementById("myCanvas");
+		var ctx=c.getContext("2d");
+		ctx.strokeRect(5,5,25,15);
+		ctx.scale(2,2);
+		ctx.strokeRect(5,5,25,15);
+		ctx.scale(2,2);
+		ctx.strokeRect(5,5,25,15);
+		ctx.scale(2,2);
+		ctx.strokeRect(5,5,25,15);
+
+		Array.prototype.unique1 = function(){
+		 var res = [this[0]];
+		 for(var i = 1; i < this.length; i++){
+		  var repeat = false;
+		  for(var j = 0; j < res.length; j++){
+		   if(this[i] == res[j]){
+		    repeat = true;
+		    break;
+		   }
+		  }
+		  if(!repeat){
+		   res.push(this[i]);
+		  }
+		 }
+		 return res;
+		}
+		var arr = [1, 'a', 'a', 'b', 'd', 'e', 'e', 1, 0]
+		alert(arr.unique1());
+
+		创建两个循环 第一个循环中寻找 第一个key 在第二个循环中的key 与第一个循环中的key 做比较 如果第一个循环中的key 相同那么不进入判断中 也就不会向第二个循环中push 第一个key
+	</script>
+</body>
+</html>
