@@ -26,7 +26,8 @@ server.on('request',function(req,res){
 		var staticFilePath = '.' + url;
 		fs.readFile(staticFilePath,function(err,data){
 			if (err) {
-				res.writeHead('404')
+				res.writeHead('404');//请求头代码
+				return res.end();
 			}
 			res.end(data)
 		})
