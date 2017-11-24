@@ -26,7 +26,7 @@ server.on('request',function(req,res){
 		var staticFilePath = '.' + url;
 		fs.readFile(staticFilePath,function(err,data){
 			if (err) {
-				throw err
+				res.writeHead('404')
 			}
 			res.end(data)
 		})
