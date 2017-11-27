@@ -21,6 +21,22 @@ server.on('request',function(req,res){
 			})
 			res.end(data)
 		})
+	}else if(url === '/submit'){
+		fs.readFile('./views/submit.html','utf8',function(err,data){
+			if (err) {
+				throw err;
+			}
+			//对于发送的响应数据 只能是二进制 数据 
+			//或者是 字符串
+			//但字符串也会被转换为二进制 再发送
+			//如果读出来的文本文件内容 想要进一步处理，那你一定要根据编码转成普通字符串再使用处理
+			//如果读出来的文本文件不处理，则可以通过response.end() 直接发送
+			//如果是二进制 则直接发送
+			res.writeHead(200,{
+				// 'content-Type':'text/html'
+			})
+			res.end(data)
+		})
 	}else if(url.startsWith('/static')){
 		console.log(url);
 		var staticFilePath = '.' + url;
@@ -31,6 +47,26 @@ server.on('request',function(req,res){
 			}
 			res.end(data)
 		})
+	}else if(url === '/favicon.ico'){
+		
+		fs.readFile('./static/img/y18.gif','utf8',function(err,data){
+			if (err) {
+				throw err;
+			}
+			//对于发送的响应数据 只能是二进制 数据 
+			//或者是 字符串
+			//但字符串也会被转换为二进制 再发送
+			//如果读出来的文本文件内容 想要进一步处理，那你一定要根据编码转成普通字符串再使用处理
+			//如果读出来的文本文件不处理，则可以通过response.end() 直接发送
+			//如果是二进制 则直接发送
+			res.writeHead(200,{
+				// 'content-Type':'text/html'
+			})
+			res.end(data)
+		})
+	}else{
+		res.writeHead('404');
+		res.end('404 not found.')
 	}
 });
 
